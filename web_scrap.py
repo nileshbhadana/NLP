@@ -8,10 +8,10 @@ Created on Fri Jan 18 02:00:08 2019
 
 import requests,html5lib
 import matplotlib.pyplot as plt
-from nltk import sent_tokenize
+#from nltk import sent_tokenize
 from nltk import word_tokenize
 from bs4 import BeautifulSoup
-from nltk.stem import PorterStemmer
+#from nltk.stem import PorterStemmer
 
 def remove_dupli(ori_list):
     new_list=[]
@@ -40,24 +40,24 @@ tables=soup.find_all('div',class_="mw-body-content")
 #print(tables[2])
 data=tables[2].getText()
 #data="men men men in in"
-sent_token=sent_tokenize(data)
-#word_token=word_tokenize(data)
+#sent_token=sent_tokenize(data)
+word_token=word_tokenize(data)
 #print(word_token)
 
-#new_list=remove_dupli(word_token)
+new_list=remove_dupli(word_token)
 #new_list=['super','is','man','hero','was']
-'''
+
 freq=[]
 for i in new_list:
     counter=word_token.count(i)
     freq.append(counter)
     
-#print(new_list)
-#print(freq)
+print(new_list)
+print(freq)
 
-print("plotting graph")
-plt.bar(new_list,freq)
-plt.show()
+#print("plotting graph")
+#plt.bar(new_list,freq)
+#plt.show()
 
 '''
 stem=PorterStemmer()
@@ -72,7 +72,6 @@ for i in range(len(sent_token)):
 
 
 
-'''
 names=[]
 for name in table:
     names.append(name.get('title'))
@@ -91,5 +90,4 @@ print(quotes)
 
 for nam in names:
     print(nam)
-
 '''
